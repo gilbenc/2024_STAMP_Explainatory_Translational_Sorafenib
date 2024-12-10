@@ -1,0 +1,124 @@
+Depmap ID,Drug sensitivity IC50 (Sanger GDSC1),Cell Line Name,Primary Disease,Lineage,Lineage Subtype
+ACH-000002,1.6527746374014751,HL60,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-000047,1.9890091626231856,GCIY,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000055,1.9383848472754968,D283MED,Embryonal Tumor,CNS/Brain,Embryonal Tumor
+ACH-000056,1.8465165438428512,DOHH2,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000059,1.358788640269213,SUPB15,B-Lymphoblastic Leukemia/Lymphoma,Lymphoid,B-Lymphoblastic Leukemia/Lymphoma
+ACH-000065,1.113249259828561,OCIAML5,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-000070,0.3749364188045899,697,B-Lymphoblastic Leukemia/Lymphoma,Lymphoid,B-Lymphoblastic Leukemia/Lymphoma
+ACH-000072,1.5377493431787483,MEG01,Myeloproliferative Neoplasms,Myeloid,Myeloproliferative Neoplasms
+ACH-000078,1.9969244830134991,MHHNB11,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-000101,1.9403447037184751,KE37,Mature T and NK Neoplasms,Lymphoid,Mature T and NK Neoplasms
+ACH-000105,1.0679980378525142,ALLSIL,T-Lymphoblastic Leukemia/Lymphoma,Lymphoid,T-Lymphoblastic Leukemia/Lymphoma
+ACH-000112,1.3899619714188198,SIGM5,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-000113,0.3409025375244632,OCIAML2,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-000124,1.7774315696177596,OCILY19,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000137,0.8922866929107474,8MGBA,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000157,1.688603389873809,A4FUK,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000162,1.8299103851709184,GA10,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000204,1.8002700482985596,LP1,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000233,1.297802957719918,DEL,Mature T and NK Neoplasms,Lymphoid,Mature T and NK Neoplasms
+ACH-000245,1.811125736610628,BL41,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000258,1.4387441724435197,DU4475,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000259,1.8585608641899105,KELLY,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-000264,1.7420466460759725,CALU6,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000273,1.513157794849196,SF539,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000287,1.9135402368969416,NUDUL1,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000295,0.9038304453885836,EM2,Myeloproliferative Neoplasms,Myeloid,Myeloproliferative Neoplasms
+ACH-000301,0.8378281152201038,LAMA84,Myeloproliferative Neoplasms,Myeloid,Myeloproliferative Neoplasms
+ACH-000318,1.2606136561931085,TE10,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000319,1.9925286318452284,MPP89,Pleural Mesothelioma,Pleura,Pleural Mesothelioma
+ACH-000320,1.565413223253889,PSN1,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000322,1.2932469910029376,HT144,Melanoma,Skin,Melanoma
+ACH-000365,1.7327402822935087,SUDHL4,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000366,0.8345332555318248,SKNDZ,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-000380,1.9993262692956488,KMS12BM,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000386,1.1853913110518977,KG1,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-000408,1.5895760223663764,TE5,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000432,1.1850056521440588,BV173,Myeloproliferative Neoplasms,Myeloid,Myeloproliferative Neoplasms
+ACH-000441,0.4345771156832441,SH4,Melanoma,Skin,Melanoma
+ACH-000525,1.5745002087779558,NCIH2171,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000538,1.6776575882122031,HUTU80,Small Bowel Cancer,Bowel,Small Bowel Cancer
+ACH-000551,1.5582089682673432,K562,Myeloproliferative Neoplasms,Myeloid,Myeloproliferative Neoplasms
+ACH-000569,1.3289890849844888,ISTMES1,Pleural Mesothelioma,Pleura,Pleural Mesothelioma
+ACH-000579,1.755679027785314,UACC257,Melanoma,Skin,Melanoma
+ACH-000609,1.2590092350286288,SF126,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000611,1.926152698282964,SUDHL6,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000617,1.0847932788622494,OVCAR4,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000647,1.9712975994263289,TE1,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000653,1.576440774794326,JJN3,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000656,1.4410982909415562,SUDHL8,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000694,1.0125975957394953,TE9,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000697,1.217887038637081,A3KAW,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000729,1.907437794514752,NCIH1963,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000738,1.9524462551402488,GB1,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000745,1.8236381771794108,MOLP8,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000751,1.875728411357872,OCIM1,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-000755,1.6462600845035094,HCC2218,Breast Ductal Carcinoma In Situ,Breast,Breast Ductal Carcinoma In Situ
+ACH-000756,1.938097374580032,GI1,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000786,1.7509771642564949,DAUDI,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000787,1.2946202418737638,LXF289,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000804,1.7323811187348908,NB1,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-000806,1.6497350423383563,L540,Hodgkin Lymphoma,Lymphoid,Hodgkin Lymphoma
+ACH-000817,1.8608340885807484,RPMI8226,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000871,1.7562126231997854,NCIH510,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000906,1.33064416958233,ES2,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000939,1.2344100546944867,SKUT1,Uterine Sarcoma/Mesenchymal,Uterus,Uterine Sarcoma/Mesenchymal
+ACH-000943,1.8952124963369703,RKO,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000944,1.833550196517674,NAMALWA,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-000969,0.4911778884766045,KM12,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000981,1.910305501580324,DND41,T-Lymphoblastic Leukemia/Lymphoma,Lymphoid,T-Lymphoblastic Leukemia/Lymphoma
+ACH-000983,1.9471488566978847,KCL22,Myeloproliferative Neoplasms,Myeloid,Myeloproliferative Neoplasms
+ACH-000985,1.7059771607201042,LS411N,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-001016,1.9911257282491392,BECKER,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-001023,1.617752432775066,CGTHW1,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-001081,1.0292598627983391,HCC2998,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-001193,1.542762375730924,SKPNDW,Ewing Sarcoma,Bone,Ewing Sarcoma
+ACH-001344,1.9469226807206368,GIMEN,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-001365,1.9851406846498656,NCIH847,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-001442,1.172197722551266,A388,Cutaneous Squamous Cell Carcinoma,Skin,Cutaneous Squamous Cell Carcinoma
+ACH-001498,1.8293366927375925,FARAGE,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-001605,1.1788875640913414,NO10,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-001606,1.4887399195524955,NO11,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-001674,1.8445656682811868,TGW,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-001702,1.951450473151173,VAESBJ,Epithelioid Sarcoma,Soft Tissue,Epithelioid Sarcoma
+ACH-001716,1.8783858751364848,GOTO,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-002090,0.4937678553205455,BB65RCC,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-002100,1.7756522192143849,DJM1,Cutaneous Squamous Cell Carcinoma,Skin,Cutaneous Squamous Cell Carcinoma
+ACH-002107,1.3068495493827108,ES6,Ewing Sarcoma,Bone,Ewing Sarcoma
+ACH-002109,1.2093571384728006,ES8,Ewing Sarcoma,Bone,Ewing Sarcoma
+ACH-002115,1.8260399729628007,EW18,Ewing Sarcoma,Bone,Ewing Sarcoma
+ACH-002141,1.7659711746560327,HSC39,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-002149,1.9092683986829395,KGN,Sex Cord Stromal Tumor,Ovary/Fallopian Tube,Sex Cord Stromal Tumor
+ACH-002151,1.1608219102012136,LB2241RCC,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-002152,0.8628695890401376,LB2518MEL,Melanoma,Skin,Melanoma
+ACH-002155,1.514865168138488,LB996RCC,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-002165,1.901524074009292,MZ2MEL,Melanoma,Skin,Melanoma
+ACH-002179,1.944281302858996,OCUBM,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-002209,-2.667803428860162,ALLPO,B-Lymphoblastic Leukemia/Lymphoma,Lymphoid,B-Lymphoblastic Leukemia/Lymphoma
+ACH-002212,1.1702859239160608,BB30HNC,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-002216,1.2625936118341363,BE13,T-Lymphoblastic Leukemia/Lymphoma,Lymphoid,T-Lymphoblastic Leukemia/Lymphoma
+ACH-002217,1.9481630602062243,BE2M17,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-002218,1.83518192688426,CESS,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-002220,1.968838012767629,CROAP2,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-002224,1.1047370792774476,D247MG,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-002230,1.9292292861176623,D542MG,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-002255,1.7288628139677755,KARPAS231,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-002256,1.9961969988790005,KARPAS45,T-Lymphoblastic Leukemia/Lymphoma,Lymphoid,T-Lymphoblastic Leukemia/Lymphoma
+ACH-002258,1.2414716050052683,KMOE2,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-002271,1.885399208272611,MFHINO,Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma,Soft Tissue,Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma
+ACH-002272,1.8162975971838804,MHHPREB1,Non-Hodgkin Lymphoma,Lymphoid,Non-Hodgkin Lymphoma
+ACH-002276,1.5714010285256876,MYM12,Acute Leukemias of Ambiguous Lineage,Myeloid,Acute Leukemias of Ambiguous Lineage
+ACH-002280,1.4039733812460584,NB13,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-002281,0.5701453582973472,NB14,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-002288,1.2094710270858993,NEC8,Non-Seminomatous Germ Cell Tumor,Testis,Non-Seminomatous Germ Cell Tumor
+ACH-002289,1.4713119381002644,NK92MI,T-Lymphoblastic Leukemia/Lymphoma,Lymphoid,T-Lymphoblastic Leukemia/Lymphoma
+ACH-002291,1.6252435584886,NTERA2CLD1,Non-Seminomatous Germ Cell Tumor,Testis,Non-Seminomatous Germ Cell Tumor
+ACH-002293,1.7970083452596155,P32ISH,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-002299,1.0105956979209234,QIMRWIL,Acute Myeloid Leukemia,Myeloid,Acute Myeloid Leukemia
+ACH-002300,1.6359378552440549,RAMOS2G64C10,Mature B-Cell Neoplasms,Lymphoid,Mature B-Cell Neoplasms
+ACH-002307,1.7951803940441882,SUDHL16,Non-Hodgkin Lymphoma,Lymphoid,Non-Hodgkin Lymphoma
+ACH-002310,1.7005462735868582,SW872,Liposarcoma,Soft Tissue,Liposarcoma
+ACH-002311,1.958981483128636,TE12,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-002313,1.9836670775613043,TK,Non-Hodgkin Lymphoma,Lymphoid,Non-Hodgkin Lymphoma
+ACH-002316,-0.5196378930859941,WIL2NS,Hereditary Spherocytosis,Myeloid,Hereditary Spherocytosis

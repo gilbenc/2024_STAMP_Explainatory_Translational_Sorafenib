@@ -1,0 +1,259 @@
+Depmap ID,Drug sensitivity AUC (PRISM Repurposing Secondary Screen),Cell Line Name,Primary Disease,Lineage,Lineage Subtype
+ACH-000007,0.9875381840851328,LS513,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000008,0.941504575931082,A101D,Melanoma,Skin,Melanoma
+ACH-000011,0.9554438620540106,253J,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000012,0.9284061539732212,HCC827,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000015,0.6820429685925887,NCIH1581,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000019,0.9057478174615592,MCF7,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000021,0.8629949430524081,NCIH1693,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000030,0.9668792098819752,PC14,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000037,0.7896134598820045,S117,"Sarcoma, NOS",Soft Tissue,"Sarcoma, NOS"
+ACH-000046,0.8950498612588407,ACHN,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-000047,0.9071563249368788,GCIY,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000048,0.8575612305725594,TOV112D,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000062,0.8935376457271375,RERFLCMS,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000066,0.9787586003723674,HCC4006,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000086,0.9318727286255312,ACCMESO1,Pleural Mesothelioma,Pleura,Pleural Mesothelioma
+ACH-000091,0.9014756929827492,OV56,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000096,0.91527151586361,G401,Rhabdoid Cancer,Kidney,Rhabdoid Cancer
+ACH-000097,0.9401258148976516,ZR751,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000098,0.945169199609109,GAMG,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000102,0.967545566737296,GMS10,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000108,0.9686682753828304,KP3,Adenosquamous Carcinoma of the Pancreas,Pancreas,Adenosquamous Carcinoma of the Pancreas
+ACH-000117,0.9143664410936796,EFM192A,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000123,0.8406550866224567,COV434,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000132,0.9119472325687784,JHOS2,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000139,0.9027236204165132,PANC0327,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000141,0.999837851541172,SNU308,Intracholecystic Papillary Neoplasm,Biliary Tract,Intracholecystic Papillary Neoplasm
+ACH-000142,0.8606894454366582,CAL29,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000147,0.8802341656106744,T47D,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000153,0.8891521176836177,NCIH2052,Pleural Mesothelioma,Pleura,Pleural Mesothelioma
+ACH-000155,0.9277698520085288,SW1990,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000159,0.9721957507739114,OSRC2,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-000163,0.7047912985579345,SW579,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000164,0.9488478493397656,PANC1,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000172,0.8585733245644533,TM87,Rhabdoid Cancer,Soft Tissue,Rhabdoid Cancer
+ACH-000174,0.9631384549028568,CAL62,Anaplastic Thyroid Cancer,Thyroid,Anaplastic Thyroid Cancer
+ACH-000176,0.9547576054656676,LOUNH91,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000182,0.9462712797304196,SNU869,Ampullary Carcinoma,Ampulla of Vater,Ampullary Carcinoma
+ACH-000186,0.7774286066998259,NCIH2444,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000191,0.9559817601533216,BHT101,Anaplastic Thyroid Cancer,Thyroid,Anaplastic Thyroid Cancer
+ACH-000192,0.9096180303261991,MFE280,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000201,0.614348840161832,A204,Rhabdoid Cancer,Kidney,Rhabdoid Cancer
+ACH-000205,0.9802642561292456,PK59,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000207,0.9527984796540316,DETROIT562,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000210,0.8974832750581951,CADOES1,Ewing Sarcoma,Bone,Ewing Sarcoma
+ACH-000219,0.9411072166778952,A375,Melanoma,Skin,Melanoma
+ACH-000221,0.8918948113688409,SNU398,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000222,0.9580672810513028,ASPC1,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000228,0.8487232788622572,BICR31,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000231,0.9039543427547658,KALS1,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000235,0.7528661594777435,PANC0403,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000242,0.865358249380079,RT4,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000243,0.8920510458206703,DANG,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000244,0.9207986718110212,DKMG,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000259,0.960501301687632,KELLY,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-000261,0.8333311175889405,RERFLCAI,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000265,0.9481823240096372,KP4,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000266,0.990752063249612,SNU213,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000273,0.907306122740594,SF539,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000274,0.912243970719702,HS852T,Melanoma,Skin,Melanoma
+ACH-000277,0.9249661336689002,HCC1419,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000278,0.9204186871383544,COV362,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000280,0.9374771024771082,SNU840,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000281,0.9747191981315872,KP2,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000289,0.9983955623227468,SNU466,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000292,0.8176417869610093,NCIH841,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000302,0.9705592253390596,SNU1077,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000307,0.980340304155436,PK1,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000308,0.98036953687966,EFO21,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000309,0.9138613135065748,SKLU1,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000311,0.912752851152699,NCIH2122,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000312,0.907483362376184,SKNBE2,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-000320,0.9349003476668516,PSN1,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000322,0.9497271127695252,HT144,Melanoma,Skin,Melanoma
+ACH-000324,0.8544503422542155,JHOC5,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000343,0.8727414055494165,NCIH522,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000344,0.998340550820802,SNU668,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000347,0.9616946898959812,QGP1,Pancreatic Neuroendocrine Tumor,Pancreas,Pancreatic Neuroendocrine Tumor
+ACH-000352,0.9016622759377568,HCC1428,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000361,0.8034766533732729,SKHEP1,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000364,0.9914107512726148,U2OS,Osteosarcoma,Bone,Osteosarcoma
+ACH-000367,0.8934074100009046,NCIH226,Pleural Mesothelioma,Pleura,Pleural Mesothelioma
+ACH-000368,0.9755055073345242,SNU1105,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000374,0.9080896516929116,HCC1143,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000375,0.7444614705666363,G402,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-000376,0.9974400779813112,SF295,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000390,0.9964259759750488,LUDLU1,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000391,0.8642641261986196,MHHES1,Ewing Sarcoma,Bone,Ewing Sarcoma
+ACH-000395,0.8886943162456037,NCIH520,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000396,0.9733751274720004,J82,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000401,0.9224732932230874,COLO800,Melanoma,Skin,Melanoma
+ACH-000407,0.8725226314873132,SNU685,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000408,0.8110163703364247,TE5,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000411,0.9873690592095808,769P,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-000414,0.9487687947878783,NCIH1944,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000415,0.880011286241873,BICR6,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000417,0.9998598296770184,PANC0813,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000420,0.7844139364132742,SNU449,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000425,0.921313913853694,UACC62,Melanoma,Skin,Melanoma
+ACH-000428,0.8722113362040377,UO31,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-000434,0.7963152630851316,NCIH1915,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000441,0.8543460906043868,SH4,Melanoma,Skin,Melanoma
+ACH-000444,0.7965767018091507,LU99,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000449,0.9286500242939671,MESSA,Uterine Sarcoma/Mesenchymal,Uterus,Uterine Sarcoma/Mesenchymal
+ACH-000452,0.8825504300472744,TE8,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000454,0.9064171894425174,HCC95,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000456,0.909352566679782,BCPAP,Poorly Differentiated Thyroid Cancer,Thyroid,Poorly Differentiated Thyroid Cancer
+ACH-000457,0.888513842886471,CAL54,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-000458,0.8739717795404528,CJM,Melanoma,Skin,Melanoma
+ACH-000463,0.9187558498677072,NCIH460,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000468,0.9643087871435948,PK45H,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000469,0.9858021514567208,YH13,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000471,0.9166250579027708,LI7,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000472,0.976584937569047,HSC2,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000473,0.8689036025281871,RT112,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000476,0.8766686580610717,JHH4,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000479,0.9247261124044076,KNS81,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000480,0.7521093648869231,HUH7,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000482,0.8695826346415834,RERFLCKJ,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000486,0.8383352509183476,KU1919,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000488,0.8937527862432078,TE11,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000493,0.9224300623396756,SNU423,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000495,0.9154336774543784,TUHR4TKB,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-000500,0.9538089510898132,SNU46,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000505,0.8314750504756012,RKN,Leiomyosarcoma,Soft Tissue,Leiomyosarcoma
+ACH-000510,0.9252551090618444,NCIH1299,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000545,0.8858341942615716,VMCUB1,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000552,0.9621158497367256,HT29,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000553,0.7351393789755147,SQ1,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000558,0.9645418589405932,A172,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000562,0.9831845571179731,HCC78,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000563,0.957774550578235,EBC1,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000570,0.905239072910382,YKG1,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000579,0.9270870574322798,UACC257,Melanoma,Skin,Melanoma
+ACH-000599,0.945926099389338,PATU8902,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000601,0.7651400393620643,MIAPACA2,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000605,0.8120961566527725,TE6,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000614,0.9288432151258994,RVH421,Melanoma,Skin,Melanoma
+ACH-000619,0.93961875539961,PECAPJ15,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000620,0.9667298939849168,JHH1,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000625,0.9110985149784842,HEP3B217,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000627,0.8723307399741462,LCLC103H,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000632,0.965491873376282,HS944T,Melanoma,Skin,Melanoma
+ACH-000648,0.6957235098789863,NCIH28,Pleural Mesothelioma,Pleura,Pleural Mesothelioma
+ACH-000650,0.9589299398383422,IGR37,Melanoma,Skin,Melanoma
+ACH-000651,0.9454919998509356,SW620,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000652,0.967330364349376,SUIT2,Pancreatic Adenocarcinoma,Pancreas,Pancreatic Adenocarcinoma
+ACH-000662,0.9916958644983708,CORL23,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000663,0.99293643657303,OVTOKO,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000667,0.923111585406464,HCC44,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000669,0.925451629167603,SW900,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000670,0.8308238503016586,SBC5,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000671,0.9454118301846728,HUH6,Hepatoblastoma,Liver,Hepatoblastoma
+ACH-000672,0.8993062224563142,IALM,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000678,0.939900839382924,MKN7,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000682,0.9559023151014532,SNU1066,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000693,0.9360822166308768,KYSE180,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000694,0.8586189937354313,TE9,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000696,0.9726400879608968,OVCAR8,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000701,0.9124524052722764,RMUGS,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000719,0.9985607802131888,RMGI,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000721,0.8886256116442935,HMC18,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000723,0.96415523186433,YD10B,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000724,0.7005398536556144,HT1376,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000730,0.9739643385116988,SKMEL5,Melanoma,Skin,Melanoma
+ACH-000734,0.5884610105016028,JHH5,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000735,0.901260615793646,PECAPJ49,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000738,0.8450382120913892,GB1,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000747,0.7713757188745964,NCIH1703,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000750,0.9518104834200428,LOXIMVI,Melanoma,Skin,Melanoma
+ACH-000758,0.8875665643393563,MKN74,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000759,0.93857299029131,MDAMB175VII,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000764,0.8846998008523188,SH10TC,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000765,0.973459387187146,WM983B,Melanoma,Skin,Melanoma
+ACH-000766,0.8748217813029388,NCIH1648,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000769,0.9236543109346634,LK2,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000776,0.9067120366018036,ONS76,Embryonal Tumor,CNS/Brain,Embryonal Tumor
+ACH-000777,0.869060448581345,KYSE30,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000781,0.9711101999151026,NCIH2023,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000784,0.9607834502829398,KYSE70,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000787,0.9708548614221358,LXF289,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000792,0.919679208040486,BFTC909,Renal Cell Carcinoma,Kidney,Renal Cell Carcinoma
+ACH-000796,0.9350059014836094,MCAS,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000800,0.9451557535368892,NCIH446,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000802,0.7856189516013786,BFTC905,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000803,0.9113991477244148,COLO668,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000804,0.8941003426547327,NB1,Neuroblastoma,Peripheral Nervous System,Neuroblastoma
+ACH-000811,0.9738501864832896,SKOV3,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000814,0.9384738507931814,HS939T,Melanoma,Skin,Melanoma
+ACH-000823,0.9979922078816404,KYSE140,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000824,0.9515236484299292,KYSE510,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000832,0.9424640097317922,CAL27,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000833,0.8637658189419697,RH30,Rhabdomyosarcoma,Soft Tissue,Rhabdomyosarcoma
+ACH-000835,0.9190025334668686,GCT,Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma,Soft Tissue,Undifferentiated Pleomorphic Sarcoma/Malignant Fibrous Histiocytoma/High-Grade Spindle Cell Sarcoma
+ACH-000836,0.9795840361083228,YD15,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000839,0.9753754292065344,SCABER,Bladder Squamous Cell Carcinoma,Bladder/Urinary Tract,Bladder Squamous Cell Carcinoma
+ACH-000840,0.9301279644004732,HCC366,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000842,0.9380172813543164,SW480,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000845,0.90472957791914,NCIH1373,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000846,0.9820451202521112,FADU,Head and Neck Squamous Cell Carcinoma,Head and Neck,Head and Neck Squamous Cell Carcinoma
+ACH-000848,0.843132871291661,JHH7,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-000849,0.9326532467373606,MDAMB468,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000855,0.9015999773900898,KYSE150,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000858,0.7976674344098926,KNS62,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000862,0.8856268519427501,KMBC2,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000863,0.9749413829763988,DBTRG05MG,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-000866,0.9565269266946346,NCIH1048,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000868,0.8104223126303758,HCC1195,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000869,0.9806743375728229,NCIH1568,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000873,0.8733362259591627,KYSE270,Esophageal Squamous Cell Carcinoma,Esophagus/Stomach,Esophageal Squamous Cell Carcinoma
+ACH-000875,0.9527868135888738,NCIH2347,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000878,0.9790019097382922,HCC15,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000879,0.8428751534011959,MFE296,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000884,0.7927678952269359,MDAMB435S,Melanoma,Skin,Melanoma
+ACH-000886,0.811065369861747,NCIH2009,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000888,0.9582099877549765,NCIH1793,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000890,0.8082710627397863,SW1271,Lung Neuroendocrine Tumor,Lung,Lung Neuroendocrine Tumor
+ACH-000891,0.8261778476469798,HCC1438,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000896,0.9537783397475006,647V,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000898,0.9926686525826188,SNU719,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000900,0.901256386733454,NCIH23,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000905,0.8917086004986281,5637,Bladder Urothelial Carcinoma,Bladder/Urinary Tract,Bladder Urothelial Carcinoma
+ACH-000906,0.9128515349199408,ES2,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000909,0.8787180828798313,JHUEM2,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000911,0.7609890721693193,NUGC3,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000915,0.9173602583821856,IPC298,Melanoma,Skin,Melanoma
+ACH-000916,0.91627676740203,NCIH1573,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000921,0.9286886909659732,NCIH157DM,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000924,0.981998648080186,NCIH2172,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000927,0.9661753294892652,BT474,Invasive Breast Carcinoma,Breast,Invasive Breast Carcinoma
+ACH-000940,0.7952420776570592,AN3CA,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000945,0.9400400938771836,NCIH650,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-000947,0.8992248249183347,OVK18,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000948,0.9838136734191504,2313287,Esophagogastric Adenocarcinoma,Esophagus/Stomach,Esophagogastric Adenocarcinoma
+ACH-000955,0.8773647893927775,SNU407,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000956,0.8795806758929718,22RV1,Prostate Adenocarcinoma,Prostate,Prostate Adenocarcinoma
+ACH-000958,0.8730930017508696,SW48,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000959,0.9279970325974596,SNUC4,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000965,0.8944151282284635,RL952,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000966,0.8665291377547437,IGROV1,Ovarian Epithelial Tumor,Ovary/Fallopian Tube,Ovarian Epithelial Tumor
+ACH-000967,0.9999809786348652,SNUC2A,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000968,0.9157663909893936,COLO792,Melanoma,Skin,Melanoma
+ACH-000971,0.800149861495885,HCT116,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000972,0.9633182129496992,HEC151,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000974,0.9563547952933495,SNGM,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000976,0.9665098747942612,HUCCT1,Intraductal Papillary Neoplasm of the Bile Duct,Biliary Tract,Intraductal Papillary Neoplasm of the Bile Duct
+ACH-000977,0.8942384933152396,LNCAPCLONEFGC,Prostate Adenocarcinoma,Prostate,Prostate Adenocarcinoma
+ACH-000982,0.938827130262098,GP2D,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000985,0.9515194418702732,LS411N,Colorectal Adenocarcinoma,Bowel,Colorectal Adenocarcinoma
+ACH-000990,0.9297827774786718,HEC108,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000994,0.966148623003188,HEC59,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-000996,0.9741271109458184,HEC251,Endometrial Carcinoma,Uterus,Endometrial Carcinoma
+ACH-001016,0.9848477319624712,BECKER,Diffuse Glioma,CNS/Brain,Diffuse Glioma
+ACH-001075,0.9846933968636368,NCIH292,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-001113,0.8369439965155774,LC1SQSF,Non-Small Cell Lung Cancer,Lung,Non-Small Cell Lung Cancer
+ACH-001190,0.7875910817873226,SKMEL2,Melanoma,Skin,Melanoma
+ACH-001306,0.7784036609547333,8305C,Anaplastic Thyroid Cancer,Thyroid,Anaplastic Thyroid Cancer
+ACH-001318,0.9266644066878716,PLCPRF5,Hepatocellular Carcinoma,Liver,Hepatocellular Carcinoma
+ACH-001321,0.8349275074651435,TT,Medullary Thyroid Cancer,Thyroid,Medullary Thyroid Cancer
