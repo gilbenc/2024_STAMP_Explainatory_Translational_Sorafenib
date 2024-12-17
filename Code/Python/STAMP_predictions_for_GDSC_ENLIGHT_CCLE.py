@@ -134,15 +134,12 @@ def parse_ENLIGHT_rnaseq(first_degree_neighbors, cancer_type, sorafenib_data = 0
     # keep in ENLIGHT only intersect genes, by the order of the intersect vector
     ENLIGHT_df = ENLIGHT_df.loc[in_first_deg_and_GDSC]
 
-
-### todo: Got to this point with this function for ENLIGHT 16.12.2024
-
-
     # Transpose, get rid of first 2 columns
     ENLIGHT_df = ENLIGHT_df.iloc[:,2:].transpose()
     ENLIGHT_df.index = [int(str(ind).split(".")[1]) for ind in ENLIGHT_df.index]
     ENLIGHT_df = ENLIGHT_df.drop_duplicates()
-    ENLIGHT_df.index = ENLIGHT_df.
+
+    ### todo: Got to this point with this function for ENLIGHT 17.12.2024
 
 
     # Parse GDSC into z scores similar to TCGA - zscore(log(rna_seq values))
@@ -151,32 +148,23 @@ def parse_ENLIGHT_rnaseq(first_degree_neighbors, cancer_type, sorafenib_data = 0
         ENLIGHT_df[col] = scipy.stats.zscore(ENLIGHT_df[col])
 
 
-    # keep only cell line from relevant tissue before normalization
-    if cancer_type != "pan_cancer":
-        GDSC_cell_line_to_tissue = GDSC_cell_target_drug.loc[:, ["CELL_LINE_NAME", "TCGA_DESC"]].drop_duplicates()
-        if cancer_type in ["COAD", "READ"]:
-            tissue_logic = GDSC_cell_line_to_tissue['TCGA_DESC'] == "COREAD"
-            GDSC_df = GDSC_df.loc[[cosm for cosm in GDSC_df.index if cosm in GDSC_cell_line_to_tissue.loc[tissue_logic,"CELL_LINE_NAME"].values]]
-        else:
-            tissue_logic = GDSC_cell_line_to_tissue['TCGA_DESC'] == cancer_type
-            GDSC_df = GDSC_df.loc[[cosm for cosm in GDSC_df.index if cosm in GDSC_cell_line_to_tissue.loc[tissue_logic,"CELL_LINE_NAME"].values]]
-
-
     # add and reorder GDSC columns to fit TCGA
-    add_columns = [col for col in gene_model.X.columns if col not in GDSC_df.columns]
+    add_columns = [col for col in gene_model.X.columns if col not in ENLIGHT_df.columns]
     # for cases where model.X.columns have duplicate values (it happens for some reason with EGFR in GBM)
-    [GDSC_df.insert(0, col, 0) for col in add_columns]
+    [ENLIGHT_df.insert(0, col, 0) for col in add_columns]
 
-    GDSC_df = GDSC_df.reindex(columns=first_degree_neighbors)
+    ENLIGHT_df = ENLIGHT_df.reindex(columns=first_degree_neighbors)
 
     # fix (hopefully) a specific bug in EGFR
     # if gene == "EGFR":
     #     GDSC_df.insert(120, 'AK4', 0, allow_duplicates=True)
-    return GDSC_df
+    return ENLIGHT_df
 
 
 ### MAIN ###
 if __name__ == '__main__':
+    #ToDo: in the meantime this code runs ONLY for ENLIGHT, GCN.
+
     # paths
     results_PATH = PATH+"Data_generated/STAMP_predictions/"
 
@@ -186,7 +174,7 @@ if __name__ == '__main__':
     data_to_predict = ["ENLIGHT"] # ["GDSC", "ENLIGHT", "CCLE"]
 
     genes_cancer_types = {
-    "RTK RAS": ["pan_cancer", "LIHC", "BRCA", "LUAD", "LUSC", "HNSC"]
+    "RTK RAS": ["pan_cancer", "LIHC", "BRCA"]#, "LUAD", "LUSC", "HNSC"]
     # "BRAF": ["pan_cancer", "LUAD"],
     # "EGFR": ["pan_cancer", "LIHC", "BRCA"],
     # "KRAS": ["pan_cancer", "LIHC", "BRCA"],
@@ -200,7 +188,11 @@ if __name__ == '__main__':
     for data in data_to_predict:
         for gene in genes_cancer_types.keys():
             for cancer_type in genes_cancer_types[gene]:
-                for model_type in ["GCN", "ELR", "RF"]:
+                for sorafenib_data in [1, 2]: #, "ELR", "RF"]:
+                    if (cancer_type == "LIHC" and sorafenib_data == 2) or (cancer_type == "BRCA" and sorafenib_data == 1):
+                        continue
+                    model_type = "GCN" # for now
+
                     # get model
                     gene_model = load_model(model_type, cancer_type, gene)
                     #ToDo: check if this (all following lines) works for ELR, RF
@@ -212,14 +204,10 @@ if __name__ == '__main__':
                         # parsre GDSC for model predictions:
                         data_first_deg_z_scored = parse_GDSC_rnaseq(gene_first_degree_neighbors, cancer_type)
                     if data == "ENLIGHT":
-                        if cancer_type == "pan_cancer":
-                            # Change sorafenib_data to 2 if you want Breast Data
-                            data_first_deg_z_scored = parse_ENLIGHT_rnaseq(gene_first_degree_neighbors, cancer_type, sorafenib_data = 1)
-                        else:
-                            data_first_deg_z_scored = parse_ENLIGHT_rnaseq(gene_first_degree_neighbors, cancer_type,
-                                                                           sorafenib_data=0)
+                        data_first_deg_z_scored = parse_ENLIGHT_rnaseq(gene_first_degree_neighbors, cancer_type, sorafenib_data = sorafenib_data)
 
-                    # get predictions for GDSC
+
+                    # get predictions for data
                     gene_model_predict = gene_model.predict(data_first_deg_z_scored)
                     data_predict_bool = np.argmax(gene_model_predict, axis=1)
                     # calculate linear score, avoid infinity values
@@ -236,9 +224,11 @@ if __name__ == '__main__':
                     data_predictions["GCN_pred"] = data_predict_bool.numpy()
                     data_predictions["GCN_linear"] = data_predict_linear.numpy()
                     data_predictions = data_predictions.iloc[:,1:]
-
-                    data_predictions.to_csv(results_PATH+data+"/data_zscored_pan_"+data+"_"+gene+"_"+cancer_type+"_"+model_type+"_predictions.csv")
-
+                    if cancer_type == "pan_cancer":
+                        data_predictions.to_csv(results_PATH+data+"/data_zscored_pan_"+data+"_"+gene+"_"+cancer_type+"_"+model_type+"_"+sorafenib_data+"_predictions.csv")
+                    else:
+                        data_predictions.to_csv(
+                            results_PATH + data + "/data_zscored_pan_" + data + "_" + gene + "_" + cancer_type + "_" + model_type + "_predictions.csv")
                     del gene_model
                     if model_type == "GCN":
                         torch.cuda.empty_cache()
