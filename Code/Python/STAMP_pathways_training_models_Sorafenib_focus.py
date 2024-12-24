@@ -23,15 +23,15 @@ from models.gcn import GCN
 from data.datasets import TCGADataset
 from data.gene_graphs import GeneManiaGraph, RegNetGraph, HumanNetV2Graph, \
     FunCoupGraph
+
 from data.utils import record_result
 from tqdm import tqdm
 import pickle
 import networkx as nx
 
 
-
-PATH_GCN_models = "/home/shair/Desktop/Gil/2023_STAMP_recovered_from_drive/"
-PATH_save_results = '/home/shair/Desktop/Gil/2024_Sorafenib_Explainatory_STAMP/STAMP_models/'
+# Path to save results
+PATH_save_results = '/home/shair/Desktop/Gil/2024_STAMP_Explainatory_Translational_Sorafenib/STAMP_models/'
 
 # Read in data: TCGA
 dataset = TCGADataset()
@@ -48,15 +48,34 @@ gene_graph_funcoup = graph_dict["funcoup"]()
 # humannetv2
 gene_graph_humannetv2 = graph_dict["humannetv2"]()
 
+
+
 # Pathway dictionary for labeling
 pathway_dict = {"Cell Cycle": "CDKN2A", "HIPPO": "LATS1", "MYC": "MYC", "NOTCH": "NOTCH1", "NRF2": "CUL3", "PI3K": "PTEN", "RTK RAS": "KRAS", "TP53": "TP53",
                 "TGF-Beta":	"TGFBR1", "WNT": "APC"}
+gene_tumor_type_targets_Sorafenib_project = {
+    # "BRAF": ["pan_cancer", "LUAD"],
+    # "EGFR": ["pan_cancer", "LIHC", "BRCA"],
+    # "KRAS": ["pan_cancer", "LIHC", "BRCA"],
+    # "MET": ["pan_cancer", "LIHC", "BRCA"],
+    # "NF1": ["pan_cancer", "LIHC", "BRCA"],
+    # "RASA1": ["pan_cancer", "LIHC", "BRCA"],
+    # "ERRFI1": ["pan_cancer", "LIHC", "BRCA"],
+    # "FGFR1": ["pan_cancer", "BRCA", "LUSC", "HNSC"]
+    "RAF1": ["pan_cancer"],
+    "PDGFR": ["pan_cancer"],
+    "KIT": ["pan_cancer"],
+    "FLT3": ["pan_cancer"],
+    "RET": ["pan_cancer"]
+}
+
+
 
 seed = 1234
 cuda = torch.cuda.is_available()
 # tuning
 data = "pathway_cell_paper"
-pathway_type = "PATHWAY" # can also be "GENE" or "ALTERATION"
+pathway_type = "GENE"  # can also be "PATHWAY" or "ALTERATION"
 dropout = False
 agg = "hierarchy"
 embedding = 30
@@ -65,20 +84,20 @@ embedding = 30
 # load all study IDs in TCGA (n = 33)
 # Study_IDs = Parse.get_cbioportal_TCGAbiolinks_cancer_types()
 # Study_IDs.append("pan_cancer")
-cancer_type_list = ["pan_cancer"]
+pathway_list = gene_tumor_type_targets_Sorafenib_project.keys()
 # Dictionary for combinations to train on
 
 
 
 # load pathway list
-pathway_list = Parse.get_cell_paper_pathway_list(pathway_type)
-pathway_list = [x for x in pathway_list if x != "PI3K"]
-pathway_list.insert(0, "RTK RAS")
+# pathway_list = Parse.get_cell_paper_pathway_list(pathway_type)
+# pathway_list = [x for x in pathway_list if x != "PI3K"]
+# pathway_list.insert(0, "RTK RAS")
 
 best_models = []
 results = []
 
-for pathway in pathway_list:
+for pathway in gene_tumor_type_targets_Sorafenib_project.keys():
     if pathway_type == "PATHWAY":
         gene = pathway_dict[pathway]
     if pathway_type == "ALTERATION":
@@ -112,7 +131,7 @@ for pathway in pathway_list:
     if (not gene in gene_graph_funcoup.nx_graph.nodes):
         continue
 
-    for cancer_type in Study_IDs:
+    for cancer_type in gene_tumor_type_targets_Sorafenib_project[gene]:
         # cbioportal combined with TCGAbiolinks: get sample IDs and labels based on cancer_type
 
         ### todo: read the pathways table and cross the sample IDs with the samples loaded
@@ -123,10 +142,14 @@ for pathway in pathway_list:
         n_samples = len(Sample_IDs)
         train_n_samples = int(len(Sample_IDs)*0.6)
         # define thresholds for learning using the BRCA down-sampling trial.
-        if ((train_n_samples < 600 and num_mutated/n_samples < 0.05) or (train_n_samples < 300 and num_mutated/n_samples < 0.1) or (train_n_samples < 200 and num_mutated/n_samples < 0.25)):
-            continue
-        if num_mutated < 13 or (len(labels) - num_mutated) < 13:
-            continue
+        # OLD thresholds
+        # if ((train_n_samples < 600 and num_mutated/n_samples < 0.05) or (train_n_samples < 300 and num_mutated/n_samples < 0.1) or (train_n_samples < 200 and num_mutated/n_samples < 0.25)):
+
+        # Consider new more allowing threshold to examine more opportunities
+        # if (train_n_samples < 100 and num_mutated/n_samples < 0.05):
+        #     continue
+        # if num_mutated < 13 or (len(labels) - num_mutated) < 13:
+        #     continue
 
         labels_df = pd.DataFrame(labels, index=Sample_IDs, columns=['label'])
         labels_df = labels_df.sample(frac=1)
@@ -168,14 +191,14 @@ for pathway in pathway_list:
                 else:
                     gene_graph = gene_graph_humannetv2
                     adj = adj_humannetv2
-                for num_layer in [1, 2, 3, 4]:
+                for num_layer in [1, 2, 3]:
                     if num_layer > 1:
                         embedding = 40
                     if num_layer > 3:
                         embedding = 50
                     for channels in [32, 40, 48]:
                         for batch_size in [4, 8, 12]:
-                            for lr in [1e-5, 1e-4, 1e-3, 1e-2]:
+                            for lr in [1e-5, 1e-4, 1e-3]:
                                 if cancer_type == "pan_cancer":
                                     lr = lr*0.01
                                 is_first_degree = True
@@ -262,28 +285,16 @@ for pathway in pathway_list:
             # Pred_table AUC
             pred_df_auc = Parse.save_predictions_table(best_auc_X_train, y_train,
                                                        best_auc_X_val, y_val, best_auc_X_test, y_test, best_auc_model, model_type)
-            if (gene == "MYC" or gene == "TP53") and pathway_type=="PATHWAY":
-                pred_df_auc.to_csv(
-                    PATH_save_results + "Prediction_tables/" + model_type + "/pred_table_" + model_type + "_" +
-                    cancer_type + "_" + pathway + "_pathway_val_AUC_" + str(best_auc) + ".csv"
-                )
-            else:
-                pred_df_auc.to_csv(
-                    PATH_save_results + "Prediction_tables/" + model_type + "/pred_table_" + model_type + "_" +
-                    cancer_type + "_" + pathway + "_val_AUC_" + str(best_auc) + ".csv"
-                )
+            pred_df_auc.to_csv(
+                PATH_save_results + "Prediction_tables/" + model_type + "/pred_table_" + model_type + "_" +
+                cancer_type + "_" + pathway + "_val_AUC_" + str(best_auc) + ".csv"
+            )
 
             # save best Models
-            if (gene == "MYC" or gene == "TP53") and pathway_type == "PATHWAY":
-                torch.save(best_auc_model,
-                           PATH_save_results + "Model_files/" + model_type + "/best_model_" + model_type + "_" +
-                           cancer_type + "_" + pathway + "_pathway_val_AUC_" + str(best_auc) + ".pt"
-                           )
-            else:
-                torch.save(best_auc_model,
-                           PATH_save_results + "Model_files/" + model_type + "/best_model_" + model_type + "_" +
-                           cancer_type + "_" + pathway + "_val_AUC_" + str(best_auc) + ".pt"
-                           )
+            torch.save(best_auc_model,
+                       PATH_save_results + "Model_files/" + model_type + "/best_model_" + model_type + "_" +
+                       cancer_type + "_" + pathway + "_val_AUC_" + str(best_auc) + ".pt"
+                       )
 
             ### run best model on Test ###
             # run prediction on test set and produce scores
@@ -368,7 +379,7 @@ for pathway in pathway_list:
             pred_df_auc = Parse.save_predictions_table(X_train, y_train, X_val,
                                                        y_val, X_test, y_test, best_auc_model, model_type)
             pred_df_auc.to_csv(
-                PATH_save_results + "Prediction_tables/Pathways/" + model_type + "/pred_table_" + model_type + "_" +
+                PATH_save_results + "Prediction_tables/" + model_type + "/pred_table_" + model_type + "_" +
                 cancer_type + "_" + pathway + "_" + gene_selection + "_AUC_" + str(best_auc) + ".csv")
 
             filename = PATH_save_results + "Model_files/" + model_type + "/best_model_" + model_type + "_" + cancer_type + "_" + pathway + "_" + gene_selection + "_AUC_" + str(best_auc) + ".sav"
@@ -465,16 +476,13 @@ for pathway in pathway_list:
             best_models.append(best_auc_exp)
 
 keys = results[0].keys()
-with open(PATH_save_results + "Comparison_grid/grid_Pathways_GCN_" + pathway_type + "_3.0.csv", 'w', newline='') as output_file:
+with open(PATH_save_results + "Comparison_grid/grid_Sorafenib_tragets_GCN_ELR_RF_" + pathway_type + "_3.0.csv", 'w', newline='') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(results)
 
 keys = best_models[0].keys()
-with open(PATH_save_results + "Comparison_grid/best_models_Pathways_GCN_" + pathway_type + "_3.0.csv", 'w', newline='') as output_file:
+with open(PATH_save_results + "Comparison_grid/best_models_Sorafenib_tragets_GCN_ELR_RF" + pathway_type + "_3.0.csv", 'w', newline='') as output_file:
     dict_writer = csv.DictWriter(output_file, keys)
     dict_writer.writeheader()
     dict_writer.writerows(best_models)
-
-
-
