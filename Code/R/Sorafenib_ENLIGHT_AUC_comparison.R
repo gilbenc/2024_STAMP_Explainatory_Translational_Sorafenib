@@ -1,4 +1,4 @@
-### ROC Script for Natan ###
+
 
 library(ggplot2)
 # library(ggpubr)
@@ -10,13 +10,28 @@ library(pROC)
 
 
 ### Load Data
+# PATH for DGX
 PATH <- "~//Desktop//Gil//2024_STAMP_Explainatory_Translational_Sorafenib//"
+# PATH for Lenovo
+  PATH <- "C://Users//gil_ben_cohen//Desktop//gil//research//2024_STAMP_Explainatory_Translational_Sorafenib//"
+
 # Enlight predictions
 PATH_ENLIGHT_prediction_files = 
-  "~//Desktop//Gil//2024_STAMP_Explainatory_Translational_Sorafenib//Data_generated//STAMP_predictions//ENLIGHT//"
+  "C://Users//gil_ben_cohen//Desktop//gil//research//2024_STAMP_Explainatory_Translational_Sorafenib//Data_generated//STAMP_predictions//ENLIGHT//"
 ENLIGHT_treatment_response <- read.csv(paste0(PATH, "Data_from_source//ENLIGHT//Enlight_drug_response_classification.csv"), row.names = 1)
 ENLIGHT_treatment_response_LIHC <- ENLIGHT_treatment_response[ENLIGHT_treatment_response$Dataset == "Sorafenib",]
 ENLIGHT_treatment_response_BRCA <- ENLIGHT_treatment_response[ENLIGHT_treatment_response$Dataset == "Sorafenib_2",]
+
+
+### Functions ###
+calculate_AUC <- function(model_ENLIGHT_preds){
+  # pred <- prediction(model_ENLIGHT_preds$GCN_linear, model_ENLIGHT_preds$ENLIGHT_response)
+  # perf <- performance(pred, "tpr", "fpr")
+  roc_obj <- roc(model_ENLIGHT_preds$ENLIGHT_response, model_ENLIGHT_preds$GCN_linear)
+  return(as.numeric(auc(roc_obj)))
+}
+
+### MAIN ###
 
 # model files
 model_files = list.files(PATH_ENLIGHT_prediction_files, pattern = "*.csv", full.names = TRUE)
@@ -26,39 +41,90 @@ model_files = list.files(PATH_ENLIGHT_prediction_files, pattern = "*.csv", full.
 Sorafenib_targets = c("BRAF", "FGFR1", "FLT3", "KIT", "RAF1", "RET")
 RTK_RAS_sig = c("EGFR", "ERRFI1", "KRAS", "MET", "NF1", "RASA1")
 
-# Vectors to define the models
-# gene_group: 0 = sorafenib targets, 1 = RTK RAS dominant, 2 = RTK RAS pathway model
-gene_group <- c()
-# model_group: 0 if not pan cancer. 1 if pan cancer predicting for LIHC, 2 if pan cancer predicting for BRCA
-model_group <- c()
-# tumor type
-tumor_type_group <- c()
+
+# Initialize an empty data frame to store results
+results <- data.frame(
+  gene = character(),
+  gene_inclusion = character(),
+  tumor_type = character(),
+  data_type = character(),
+  auc = numeric(),
+  stringsAsFactors = FALSE
+)
+
 for(file in model_files){
-  
   file_name = basename(file)
-  if(strsplit(file_name, "_")[[1]][5] %in% Sorafenib_targets){
-    gene_group <- c(gene_group, 0)
+  print(file_name)
+  
+  
+  gene <- strsplit(file_name, "_")[[1]][5]
+  if(gene %in% Sorafenib_targets){
+    gene_group <- "Sorafenib_targets"
   }
-  if(strsplit(file_name, "_")[[1]][5] %in% RTK_RAS_sig){
-    gene_group <- c(gene_group, 1)
+  if(gene %in% RTK_RAS_sig){
+    gene_group <- "RTK_RAS_dominant_genes"
   }
-  if(strsplit(file_name, "_")[[1]][5] == "RTK RAS"){
-    gene_group <- c(gene_group, 2)
+  if(gene == "RTK RAS"){
+    gene_group <- "RTK_RAS_pathway"
   }
-  tumor_type <- strsplit(file_name, "_")[[1]][6]
-  tumor_type_group <- c(tumor_type_group, tumor_type)
-  if(tumor_type == "LIHC" || (tumor_type == "pan" && grepl("_1_", file_name)))
-    model_group <- c(model_group, 1)
-  if(tumor_type == "BRCA" || (tumor_type == "pan" && grepl("_2_", file_name)))
-    model_group <- c(model_group, 2)
+  
+  tumor <- strsplit(file_name, "_")[[1]][6]
+  if(tumor == "pan") tumor <- "pan_cancer"
+  
+  if(tumor == "LIHC" || (tumor == "pan_cancer" && grepl("_1_", file_name)))
+    data <- "LIHC"
+  if(tumor == "BRCA" || (tumor == "pan_cancer" && grepl("_2_", file_name)))
+    data <- "BRCA"
+  
+  print(paste0(gene, ", gene group:", gene_group, ", tumor type:", tumor, ", data: ", data))
+  model_ENLIGHT_preds <- read.csv(file, row.names = 1)
+  if(data == "LIHC"){
+    model_ENLIGHT_preds$ENLIGHT_response <- ENLIGHT_treatment_response_LIHC[row.names(model_ENLIGHT_preds), "Response"]} else {
+      model_ENLIGHT_preds$ENLIGHT_response <- ENLIGHT_treatment_response_BRCA[row.names(model_ENLIGHT_preds), "Response"] }
+  auc <- calculate_AUC(model_ENLIGHT_preds)
+  
+  # Add the result to the data frame
+  results <- rbind(
+    results,
+    data.frame(
+      gene = gene,
+      gene_inclusion = gene_group,
+      tumor_type = tumor,
+      data_type = data,
+      auc = auc,
+      stringsAsFactors = FALSE
+    ))  
 }
 
-count = 1
-for(file in model_files){
-  read.csv(file, row.names = 1)
-  if()
-  merge()
-}
+
+# Order tumor types and gene inclusion to control plot grouping
+results$tumor_type <- factor(results$tumor_type, levels = c("pan_cancer", "LIHC", "BRCA"))
+results$gene_inclusion <- factor(results$gene_inclusion, 
+                                 levels = c("Sorafenib_targets", "RTK_RAS_dominant_genes", "RTK_RAS_pathway"))
+
+# Filter data for LIHC
+results_LIHC <- subset(results, data_type == "LIHC")
+
+# Filter data for BRCA
+results_BRCA <- subset(results, data_type == "BRCA")
+
+# Heatmap for LIHC
+heatmap_LIHC <- ggplot(results_LIHC, aes(x = tumor_type, y = gene, fill = auc)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "blue", high = "red", name = "AUC") +
+  labs(
+    title = "AUC Heatmap for LIHC Models",
+    x = "Tumor Type",
+    y = "Gene"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(hjust = 0.5, size = 16),
+    axis.text = element_text(size = 10)
+  )
+
+
 
 
 ## A. create performance for ROC curve calculations
