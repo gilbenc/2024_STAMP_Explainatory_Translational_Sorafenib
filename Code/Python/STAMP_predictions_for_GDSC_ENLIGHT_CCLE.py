@@ -12,22 +12,12 @@ from data.gene_graphs import GeneManiaGraph, RegNetGraph, HumanNetV2Graph, \
 import networkx as nx
 from data.datasets import TCGADataset
 
+
+### ToDo: modify parsing functions for GDSC, CCLE ###
+
 PATH = "/home/shair/Desktop/Gil/2024_STAMP_Explainatory_Translational_Sorafenib/"
-
-# graphs dictionary
-graph_dict = {"regnet": RegNetGraph, "genemania": GeneManiaGraph,
-                  "humannetv2": HumanNetV2Graph, "funcoup": FunCoupGraph}
-# load graph once for funcoup
-gene_graph_funcoup = graph_dict["funcoup"]()
-# humannetv2
-gene_graph_humannetv2 = graph_dict["humannetv2"]()
-
-# Read in data: TCGA
-dataset = TCGADataset()
-# Remove duplicate genes!
-dataset.df = dataset.df.loc[:,~dataset.df.columns.duplicated()]
-# save a copy of dataset, since it will be modified for cancer_type specific samples
-dataset_df_copy = dataset.df
+PATH_output = "/home/shair/Desktop/Gil/2024_STAMP_Explainatory_Translational_Sorafenib/Data_generated/"
+results_PATH = PATH_output + "STAMP_predictions/"
 
 
 
@@ -213,29 +203,37 @@ def load_gene_graphs(gene):
     neighbors_humannetv2 = list(neighborhood_humannetv2.nodes)
     return [neighbors_funcoup, neighbors_humannetv2]
 
-def get_neighbors_for_classical_model(gene_graphs, gene_model):
-    #todo: fit this to RF.
-    # Find features names (1st degree neighbors), make sure their order is same as the input to these models.
-    # keep a variable for feature_importances_ (RF) / coef_ (ELR).
-    # Save feature names + these values into a dataframe so it will be available later for interpretability.
+def get_neighbors_for_classical_model(gene_graphs, gene_model, save_feature_importance=False):
     neighbors_funcoup, neighbors_humannetv2 = gene_graphs
-    if len(gene_model.coef_) == len(neighbors_funcoup):
+    if model_type == "ELR": feature_importance = gene_model.coef_
+    if model_type == "RF": feature_importance = gene_model.feature_importances_
+
+    if len(feature_importance) == len(neighbors_funcoup):
+        # Save feature importance?
+        if save_feature_importance:
+            pd.DataFrame(
+                {"first degree neighbors": neighbors_funcoup, "feature_importance": feature_importance}
+            ).to_csv(PATH_output + "/Classical_models_feature_importance/" + model_type + "_" + gene + "_" + cancer_type + "_funcoup_feature_importance.csv")
+
         return pd.Index(neighbors_funcoup).drop_duplicates()
-    if len(gene_model.coef_) == len(neighbors_humannetv2):
+    if len(feature_importance) == len(neighbors_humannetv2):
+        # Save feature importance?
+        if save_feature_importance:
+            pd.DataFrame(
+                {"first degree neighbors": neighbors_humannetv2, "feature_importance": feature_importance}
+            ).to_csv(PATH_output + "/Classical_models_feature_importance/" + model_type + "_" + gene + "_" + cancer_type + "_humannetv2_feature_importance.csv")
         return pd.Index(neighbors_humannetv2).drop_duplicates()
     print("does not fit graphs. exiting..")
     return 0
 
+
+
 ### MAIN ###
 if __name__ == '__main__':
-    #ToDo: in the meantime this code runs ONLY for ENLIGHT, GCN (Modified, now checking for classical models).
 
-    # paths
-    results_PATH = PATH+"Data_generated/STAMP_predictions/"
-
-
+    # Parameters
+    save_feature_importance = True
     delay_seconds = 5
-
     data_to_predict = ["ENLIGHT"] # ["GDSC", "ENLIGHT", "CCLE"]
 
     # Currently only options for ENLIGHT data are used (pan cancer, LIHC, BRCA)
@@ -256,35 +254,49 @@ if __name__ == '__main__':
     "RET": ["pan_cancer"]
     }
 
+    # graphs dictionary
+    graph_dict = {"regnet": RegNetGraph, "genemania": GeneManiaGraph,
+                  "humannetv2": HumanNetV2Graph, "funcoup": FunCoupGraph}
+    # load graph once for funcoup
+    gene_graph_funcoup = graph_dict["funcoup"]()
+    # humannetv2
+    gene_graph_humannetv2 = graph_dict["humannetv2"]()
+
+    # Read in data: TCGA
+    dataset = TCGADataset()
+    # Remove duplicate genes!
+    dataset.df = dataset.df.loc[:, ~dataset.df.columns.duplicated()]
+    # save a copy of dataset, since it will be modified for cancer_type specific samples
+    dataset_df_copy = dataset.df
 
     for gene in genes_cancer_types.keys():
         gene_graphs = load_gene_graphs(gene)
         for model_type in ["RF", "ELR"]: # "GCN already performed
             for cancer_type in genes_cancer_types[gene]:
+                ## Get gene's graph & first degree variables
                 gene_model = load_model(model_type, cancer_type, gene)
-                    # get model
+                # 1st degree neighbors
+                if model_type == "GCN":
+                    gene_first_degree_neighbors = gene_model.X.columns.drop_duplicates()
+                else:
+                    gene_first_degree_neighbors = get_neighbors_for_classical_model(gene_graphs, gene_model, save_feature_importance)
+
                 for data in ["ENLIGHT"]: # , "GDSC", "CCLE"]:
                     for sorafenib_data in [1, 2]: #, "ELR", "RF"]:
                         if (cancer_type == "LIHC" and sorafenib_data == 2) or (cancer_type == "BRCA" and sorafenib_data == 1):
                             continue
-                        #ToDo: check if this (all following lines) works for ELR, RF
-
-                        # 1st degree neighbors
-                        if model_type == "GCN":
-                            gene_first_degree_neighbors = gene_model.X.columns.drop_duplicates()
-                        else:
-                            gene_first_degree_neighbors = get_neighbors_for_classical_model(gene_graphs, gene_model)
 
                         if data == "GDSC":
                             # parsre GDSC for model predictions:
                             data_first_deg_z_scored = parse_GDSC_rnaseq(gene_first_degree_neighbors, cancer_type)
                         if data == "ENLIGHT":
                             data_first_deg_z_scored = parse_ENLIGHT_rnaseq(gene_first_degree_neighbors, cancer_type, sorafenib_data = sorafenib_data)
-
+                        # if data == "CCLE":
+                            # data_first_deg_z_scored = parse_CCLE_rnaseq(gene_first_degree_neighbors, cancer_type)
 
                         # get predictions for data
                         gene_model_predict = gene_model.predict(data_first_deg_z_scored)
-                        # todo: look into these lines for RF
+
                         if model_type == "GCN":
                             data_predict_bool = np.argmax(gene_model_predict, axis=1)
                             data_predict_linear = scipy.special.logit(gene_model_predict[:, 1])
@@ -294,39 +306,42 @@ if __name__ == '__main__':
                             min_value = min(data_predict_linear[data_predict_linear != -math.inf])
                             data_predict_linear[data_predict_linear == math.inf] = max_value + 1
                             data_predict_linear[data_predict_linear == -math.inf] = min_value - 1
-                        else:
+                            # Convert tensor to numpy array
+                            data_predict_bool = data_predict_bool.numpy()
+                            data_predict_linear = data_predict_linear.numpy()
+                        if model_type == "ELR":
                             # Turn classical models' predictions to logistic predictions (use sigmoid function)
                             # Apply the sigmoid function to convert these into probabilities
                             sigmoid = lambda z: 1 / (1 + np.exp(-z))
                             probabilities = sigmoid(gene_model_predict)
-                            # Stretch sigmoid result between 0 and 1
-                            data_predict_linear = (probabilities - np.min(probabilities)) / (np.max(probabilities) - np.min(probabilities))
+                            data_predict_linear = probabilities
+
                             # Convert probabilities to class predictions (0 or 1) using a threshold of 0.5 on probabilities (after sigmoid)
                             data_predict_bool = (probabilities > 0.5).astype(int)
 
+                        if model_type == "RF":
+                            data_predict_bool = gene_model_predict
+                            data_predict_linear = scipy.special.logit(gene_model.predict_proba(data_first_deg_z_scored)[:,1])
 
+                        # For all model types:
+                        # Stretch linear score between 0 and 1 (minmax)
+                        data_predict_linear = (data_predict_linear - np.min(data_predict_linear)) / (
+                                    np.max(data_predict_linear) - np.min(data_predict_linear))
 
-                        #todo: is this ok for classical models?
 
                         # create dataframe with model preds for selected data
                         data_predictions = pd.DataFrame(data_first_deg_z_scored.index)
                         data_predictions.index = data_predictions[0]
                         data_predictions = data_predictions.rename(columns={0: data +"_Sample_name"})
-                        data_predictions["GCN_pred"] = data_predict_bool.numpy()
-                        data_predictions["GCN_linear"] = data_predict_linear.numpy()
+                        data_predictions[str(model_type+"_pred")] = data_predict_bool
+                        data_predictions[str(model_type+"_linear")] = data_predict_linear
                         data_predictions = data_predictions.iloc[:,1:]
                         if cancer_type == "pan_cancer":
                             data_predictions.to_csv(results_PATH+data+"/data_zscored_pan_"+data+"_"+gene+"_"+cancer_type+"_"+model_type+"_"+str(sorafenib_data)+"_predictions.csv")
                         else:
                             data_predictions.to_csv(
                                 results_PATH + data + "/data_zscored_pan_" + data + "_" + gene + "_" + cancer_type + "_" + model_type + "_predictions.csv")
-                        del gene_model
+
                         if model_type == "GCN":
                             torch.cuda.empty_cache()
-                        else:
-                            ### REMOVE THIS after running the script successfully once. ###
-                            # If its classical models, save their 1st degree neighbors since I don't have it at saved yet
-
-                            # todo: Examine this code, is it correct for 1st deg neighbors?
-                            with open(PATH + "STAMP_models/Model_files/" + model_type + "/" + gene + "/" + cancer_type + "_" + gene + "_neighbors.pkl", 'wb') as file:
-                                pickle.dump(gene_first_degree_neighbors, file)
+                del gene_model
