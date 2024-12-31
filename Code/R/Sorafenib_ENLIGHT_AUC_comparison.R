@@ -11,13 +11,13 @@ library(pROC)
 
 ### Load Data
 # PATH for DGX
-PATH <- "~//Desktop//Gil//2024_STAMP_Explainatory_Translational_Sorafenib//"
+# PATH <- "~//Desktop//Gil//2024_STAMP_Explainatory_Translational_Sorafenib//"
 # PATH for Lenovo
-  # PATH <- "C://Users//gil_ben_cohen//Desktop//gil//research//2024_STAMP_Explainatory_Translational_Sorafenib//"
+  PATH <- "C://Users//gil_ben_cohen//Desktop//gil//research//2024_STAMP_Explainatory_Translational_Sorafenib//"
 
 # Enlight predictions
 PATH_ENLIGHT_prediction_files = 
-  "~//Desktop//Gil//2024_STAMP_Explainatory_Translational_Sorafenib//Data_generated//STAMP_predictions//ENLIGHT//"
+  paste0(PATH, "//Data_generated//STAMP_predictions//ENLIGHT//")
 ENLIGHT_treatment_response <- read.csv(paste0(PATH, "Data_from_source//ENLIGHT//Enlight_drug_response_classification.csv"), row.names = 1)
 ENLIGHT_treatment_response_LIHC <- ENLIGHT_treatment_response[ENLIGHT_treatment_response$Dataset == "Sorafenib",]
 ENLIGHT_treatment_response_BRCA <- ENLIGHT_treatment_response[ENLIGHT_treatment_response$Dataset == "Sorafenib_2",]
@@ -120,75 +120,216 @@ results$model <- factor(results$model, levels = c("GCN", "ELR", "RF"))
 results_LIHC <- subset(results, data_type == "LIHC")
 results_LIHC_ELR <- subset(results_LIHC, model == "ELR")
 results_LIHC_RF <- subset(results_LIHC, model == "RF")
-
+results_LIHC_GCN <- subset(results_LIHC, model == "GCN")
 # Filter data for BRCA
 results_BRCA <- subset(results, data_type == "BRCA")
 results_BRCA_ELR <- subset(results_BRCA, model == "ELR")
 results_BRCA_RF <- subset(results_BRCA, model == "RF")
+results_BRCA_GCN <- subset(results_BRCA, model == "GCN")
+
 
 # Heatmap for LIHC
-heatmap_LIHC_ELR <- ggplot(results_LIHC_ELR, aes(x = tumor_type, y = gene, fill = auc)) +
+heatmap_LIHC_GCN <- ggplot(results_LIHC_GCN, aes(x = tumor_type, y = gene, fill = auc)) +
   geom_tile(color = "white") +
-  scale_fill_gradient(low = "blue", high = "red", name = "AUC") +
+  scale_fill_gradient2(
+    low = "blue", mid = "yellow", high = "red", midpoint = 0.67, limits = c(0.41, 0.925), # Set the range of the color scale
+    name = "AUC",
+    breaks = c(0.41, 0.67, 0.925)
+  ) +
+  facet_grid(rows = vars(gene_inclusion), scales = "free_y", space = "free_y") +
   labs(
-    title = "AUC Heatmap for LIHC ELR Models",
+    title = "AUC: GCN LIHC Models",
     x = "Tumor Type",
     y = "Gene"
   ) +
-  theme_minimal() +
+  theme_minimal(base_size = 32) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.title = element_text(hjust = 0.5, size = 16),
-    axis.text = element_text(size = 10)
+    strip.text.y = element_text(angle = 0, face = "bold"),
+    plot.title = element_text(hjust = 0.5)
+  )
+
+
+heatmap_LIHC_ELR <- ggplot(results_LIHC_ELR, aes(x = tumor_type, y = gene, fill = auc)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(
+    low = "blue", mid = "yellow", high = "red", midpoint = 0.63, limits = c(0.41, 0.925), # Set the range of the color scale
+    name = "AUC",
+    breaks = c(0.41, 0.63, 0.925)
+  ) +
+  facet_grid(rows = vars(gene_inclusion), scales = "free_y", space = "free_y") +
+  labs(
+    title = "AUC: ELR LIHC Models",
+    x = "Tumor Type",
+    y = "Gene"
+  ) +
+  theme_minimal(base_size = 32) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    strip.text.y = element_text(angle = 0, face = "bold"),
+    plot.title = element_text(hjust = 0.5)
   )
 
 heatmap_LIHC_RF <- ggplot(results_LIHC_RF, aes(x = tumor_type, y = gene, fill = auc)) +
   geom_tile(color = "white") +
-  scale_fill_gradient(low = "blue", high = "red", name = "AUC") +
+  scale_fill_gradient2(
+    low = "blue", mid = "yellow", high = "red", midpoint = 0.67, limits = c(0.41, 0.925), # Set the range of the color scale
+    name = "AUC",
+    breaks = c(0.41, 0.67, 0.925)
+  ) +
+  facet_grid(rows = vars(gene_inclusion), scales = "free_y", space = "free_y") +
   labs(
-    title = "AUC Heatmap for LIHC ELR Models",
+    title = "AUC: RF LIHC Models",
     x = "Tumor Type",
     y = "Gene"
-  ) +
-  theme_minimal() +
+  )+
+  theme_minimal(base_size = 32) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.title = element_text(hjust = 0.5, size = 16),
-    axis.text = element_text(size = 10)
+    strip.text.y = element_text(angle = 0, face = "bold"),
+    plot.title = element_text(hjust = 0.5)
   )
 
 
+## heatmaps for BRCA
+heatmap_BRCA_GCN <- ggplot(results_BRCA_GCN, aes(x = tumor_type, y = gene, fill = auc)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient2(
+    low = "blue", mid = "yellow", high = "red", midpoint = 0.59, limits = c(0.41, 0.761), # Set the range of the color scale
+    name = "AUC",
+    breaks = c(0.41, 0.59, 0.76)
+  ) +
+  facet_grid(rows = vars(gene_inclusion), scales = "free_y", space = "free_y") +
+  labs(
+    title = "AUC: GCN Breast Models",
+    x = "Tumor Type",
+    y = "Gene"
+  )+
+  theme_minimal(base_size = 32) +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    strip.text.y = element_text(angle = 0, face = "bold"),
+    plot.title = element_text(hjust = 0.5)
+  )
+
 heatmap_BRCA_ELR <- ggplot(results_BRCA_ELR, aes(x = tumor_type, y = gene, fill = auc)) +
   geom_tile(color = "white") +
-  scale_fill_gradient(low = "blue", high = "red", name = "AUC") +
+  scale_fill_gradient2(
+    low = "blue", mid = "yellow", high = "red", midpoint = 0.59, limits = c(0.41, 0.761), # Set the range of the color scale
+    name = "AUC",
+    breaks = c(0.41, 0.59, 0.76)
+  ) +
+  facet_grid(rows = vars(gene_inclusion), scales = "free_y", space = "free_y") +
   labs(
-    title = "AUC Heatmap for BRCA ELR Models",
+    title = "AUC: ELR Breast Models",
     x = "Tumor Type",
     y = "Gene"
   ) +
-  theme_minimal() +
+  theme_minimal(base_size = 32) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.title = element_text(hjust = 0.5, size = 16),
-    axis.text = element_text(size = 10)
+    strip.text.y = element_text(angle = 0, face = "bold"),
+    plot.title = element_text(hjust = 0.5)
   )
 
 heatmap_BRCA_RF <- ggplot(results_BRCA_RF, aes(x = tumor_type, y = gene, fill = auc)) +
   geom_tile(color = "white") +
-  scale_fill_gradient(low = "blue", high = "red", name = "AUC") +
+  scale_fill_gradient2(
+    low = "blue", mid = "yellow", high = "red", midpoint = 0.59, limits = c(0.41, 0.761), # Set the range of the color scale
+    name = "AUC",
+    breaks = c(0.41, 0.59, 0.76)
+  ) +
+  facet_grid(rows = vars(gene_inclusion), scales = "free_y", space = "free_y") +
   labs(
-    title = "AUC Heatmap for BRCA RF Models",
+    title = "AUC: RF Breast Models",
     x = "Tumor Type",
     y = "Gene"
   ) +
-  theme_minimal() +
+  theme_minimal(base_size = 32) +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.title = element_text(hjust = 0.5, size = 16),
-    axis.text = element_text(size = 10)
+    strip.text.y = element_text(angle = 0, face = "bold"),
+    plot.title = element_text(hjust = 0.5)
   )
+print(heatmap_LIHC_GCN)
+print(heatmap_LIHC_ELR)
+print(heatmap_LIHC_RF)
+print(heatmap_BRCA_GCN)
+print(heatmap_BRCA_ELR)
+print(heatmap_BRCA_RF)
+
+### Test for significance of results' properties in  ENLIGHT LIHC:
+kruskal_LIHC_model <- kruskal.test(auc ~ model, data = results_LIHC)
+kruskal_LIHC_gene <- kruskal.test(auc ~ gene, data = results_LIHC)
+# kruskal_LIHC_gene_pan <- kruskal.test(auc ~ gene, data = results_LIHC[results_LIHC$tumor_type == "pan_cancer",])
+kruskal_LIHC_gene_inclusion <- kruskal.test(auc ~ gene_inclusion, data = results_LIHC)
+# kruskal_LIHC_gene_inclusion_pan <- kruskal.test(auc ~ gene_inclusion, data = results_LIHC[results_LIHC$tumor_type == "pan_cancer",])
+kruskal_LIHC_tumor_type <- kruskal.test(auc ~ tumor_type, data = results_LIHC)
+# kruskal_LIHC_tumor_type_dominant <- kruskal.test(auc ~ tumor_type, data = results_LIHC[results_LIHC$gene_inclusion == "RTK_RAS_dominant_genes",])
+print(kruskal_LIHC_model)
+print(kruskal_LIHC_gene)
+# print(kruskal_LIHC_gene_pan)
+print(kruskal_LIHC_gene_inclusion)
+print(kruskal_LIHC_tumor_type)
+# print(kruskal_LIHC_gene_inclusion_pan)
+# print(kruskal_LIHC_tumor_type_dominant)
+
+### Test for significance of results' properties in  ENLIGHT BRCA:
+kruskal_BRCA_model <- kruskal.test(auc ~ model, data = results_BRCA)
+kruskal_BRCA_gene <- kruskal.test(auc ~ gene, data = results_BRCA)
+kruskal_BRCA_gene_inclusion <- kruskal.test(auc ~ gene_inclusion, data = results_BRCA)
+# kruskal_BRCA_gene_pan <- kruskal.test(auc ~ gene, data = results_BRCA[results_BRCA$tumor_type == "pan_cancer",])
+# kruskal_BRCA_gene_inclusion_pan <- kruskal.test(auc ~ gene_inclusion, data = results_BRCA[results_BRCA$tumor_type == "pan_cancer",])
+kruskal_BRCA_tumor_type <- kruskal.test(auc ~ tumor_type, data = results_BRCA)
+
+print(kruskal_BRCA_model)
+print(kruskal_BRCA_gene)
+print(kruskal_BRCA_gene_inclusion)
+# print(kruskal_BRCA_gene_pan)
+# print(kruskal_BRCA_gene_inclusion_pan)
+
+print(kruskal_BRCA_tumor_type)
 
 
+
+
+# Reorder genes based on mean AUC within each gene_inclusion group
+library(dplyr)
+library(ggplot2)
+
+# Calculate mean AUC for each gene within each gene_inclusion category
+mean_auc_order <- results_LIHC %>%
+  group_by(gene_inclusion, gene) %>%
+  summarize(mean_auc = mean(auc, na.rm = TRUE), .groups = "drop") %>%
+  arrange(gene_inclusion, desc(mean_auc))
+
+# Reorder genes based on the calculated order
+ggplot(results_LIHC, aes(
+  x = factor(gene, levels = mean_auc_order$gene),
+  y = auc, fill = gene_inclusion
+)) +
+  geom_boxplot() +
+  labs(
+    title = "ENLIGHT LIHC validation: AUC Distribution by Gene groups",
+    x = "Gene", y = "AUC", fill = "Gene Group"
+  ) +
+  theme_minimal(base_size = 26) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate x-axis labels for better readability
+
+## ENLIHT BRCA setup:
+## Plot based on tumor type training:
+# Reorder genes based on the calculated order
+ggplot(results_BRCA, aes(
+  x = factor(tumor_type),
+  y = auc, fill = tumor_type
+)) +
+  geom_boxplot() +
+  labs(
+    title = "ENLIGHT BRCA validation: AUC Distribution training setup",
+    x = "Tumor type", y = "AUC"
+  ) +
+  theme_minimal(base_size = 26) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotate x-axis labels for better readability
 
 ## A. create performance for ROC curve calculations
 # label should be metabric's label for mutated/non-mutated TP53, pred_score is the model's prediction score
