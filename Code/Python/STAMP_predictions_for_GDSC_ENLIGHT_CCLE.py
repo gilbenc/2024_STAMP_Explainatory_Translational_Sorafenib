@@ -27,7 +27,13 @@ results_PATH = PATH_output + "STAMP_predictions/"
 # returns model of model_type, for cancer_type & gene combination
 def load_model(model_type, cancer_type, gene):
     PATH_model = PATH + "STAMP_models/Model_files/" + model_type + "/"
-    pattern = "*"+'_'+cancer_type + "_" + gene+"*"
+    pattern = "*" + '_' + cancer_type + "_" + gene + "*"
+
+
+    ### TEMPORARY ###
+    PATH_model = "/home/shair/Desktop/Gil/2023_STAMP_recovered_from_drive/Model_files_v3.0/Pathways/GCN/"
+    pattern = "*" + '_' + "LIHC" + "_" + "RTK RAS" + "*"
+
     model_path = find(pattern, PATH_model)
     if len(model_path) > 1:
         print("error, too many files fit description.")
@@ -271,7 +277,7 @@ if __name__ == '__main__':
 
     for gene in genes_cancer_types.keys():
         gene_graphs = load_gene_graphs(gene)
-        for model_type in ["RF", "ELR"]: # "GCN already performed
+        for model_type in ["GCN", "RF", "ELR"]: # "GCN already performed
             for cancer_type in genes_cancer_types[gene]:
                 ## Get gene's graph & first degree variables
                 gene_model = load_model(model_type, cancer_type, gene)
