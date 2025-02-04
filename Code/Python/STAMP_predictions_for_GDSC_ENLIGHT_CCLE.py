@@ -238,7 +238,7 @@ def get_neighbors_for_classical_model(gene_graphs, gene_model, save_feature_impo
 if __name__ == '__main__':
 
     # Parameters
-    save_feature_importance = True
+    # save_feature_importance = True
     delay_seconds = 5
     data_to_predict = ["ENLIGHT"] # ["GDSC", "ENLIGHT", "CCLE"]
 

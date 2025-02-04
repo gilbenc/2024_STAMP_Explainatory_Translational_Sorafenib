@@ -54,14 +54,13 @@ gene_graph_humannetv2 = graph_dict["humannetv2"]()
 pathway_dict = {"Cell Cycle": "CDKN2A", "HIPPO": "LATS1", "MYC": "MYC", "NOTCH": "NOTCH1", "NRF2": "CUL3", "PI3K": "PTEN", "RTK RAS": "KRAS", "TP53": "TP53",
                 "TGF-Beta":	"TGFBR1", "WNT": "APC"}
 gene_tumor_type_targets_Sorafenib_project = {
-    # "BRAF": ["pan_cancer", "LUAD"],
     # "EGFR": ["pan_cancer", "LIHC", "BRCA"],
     # "KRAS": ["pan_cancer", "LIHC", "BRCA"],
     # "MET": ["pan_cancer", "LIHC", "BRCA"],
     # "NF1": ["pan_cancer", "LIHC", "BRCA"],
     # "RASA1": ["pan_cancer", "LIHC", "BRCA"],
     # "ERRFI1": ["pan_cancer", "LIHC", "BRCA"],
-    # "FGFR1": ["pan_cancer", "BRCA", "LUSC", "HNSC"]
+
     "RAF1": ["pan_cancer"],
     "PDGFR": ["pan_cancer"],
     "KIT": ["pan_cancer"],
