@@ -455,7 +455,7 @@ for setup in ["sorafenib_targets", "rtk_ras_dominant"]:
                         cancer_type + "_" + gene + "_" + gene_selection + "_AUC_" + str(best_auc) + ".csv")
 
 
-                    filename = PATH_save_results + "Model_files/" + model_type + "/best_model_Perturbations_RTK_RAS_label" + "_" + setup + "_" + model_type + "_" + cancer_type + "_" + gene_selection + "_AUC_" + str(
+                    filename = PATH_save_results + "Model_files/" + model_type + "/best_model_Perturbations_RTK_RAS_label" + "_" + setup + "_" + model_type + "_" + cancer_type + "_" + gene +  "_" + gene_selection + "_AUC_" + str(
                         best_auc) + ".sav"
                     pickle.dump(best_auc_model, open(filename, 'wb'))
 
@@ -480,114 +480,114 @@ for setup in ["sorafenib_targets", "rtk_ras_dominant"]:
                           test_recall)
 
                     # RF
-                    model_type = "RF"
-                    best_auc = 0
-                    best_auc_model = None
+                    # model_type = "RF"
+                    # best_auc = 0
+                    # best_auc_model = None
+                    #
+                    # for n_estimator in [1000, 1500, 2000]:
+                    #     for criterion in ["gini", "entropy"]:
+                    #         for max_features in [0.4, 0.3, 0.2, 0.1, "sqrt"]:
+                    #             experiment = {
+                    #                 "setup": setup,
+                    #                 "gene": gene,
+                    #                 "model": model_type,
+                    #                 "graph": "NA",
+                    #                 "gene_selection": "NA",
+                    #                 "cancer type": cancer_type,
+                    #                 "num_layer": "NA",
+                    #                 "channels": "NA",
+                    #                 "batch": "NA",
+                    #                 "lr": "NA",
+                    #                 "ratio": "NA",
+                    #                 "dropout": dropout,
+                    #                 "aggregation": "NA",
+                    #                 "criterion": criterion,
+                    #                 "max_features": max_features,
+                    #                 "n_estimator": n_estimator,
+                    #             }
+                    #
+                    #             model = RandomForest_with_Gene_Vector(n_estimators=n_estimator, max_depth=3,
+                    #                                            criterion=criterion, max_features=max_features)
+                    #             model.fit(X_train, y_train)
+                    #             model.gene_vector = gene_set
+                    #             y_val_hat = model.predict(X_val)
+                    #             # calculate, print and save results
+                    #             val_auc = sklearn.metrics.roc_auc_score(y_val, y_val_hat)
+                    #             val_acc = sklearn.metrics.accuracy_score(y_val, list(map(int, y_val_hat > 0.5)))
+                    #             val_prec = sklearn.metrics.precision_score(y_val, list(map(int, y_val_hat > 0.5)))
+                    #             val_recall = sklearn.metrics.recall_score(y_val, list(map(int, y_val_hat > 0.5)))
+                    #             print("model: ", model_type, "cancer_type: ", cancer_type, ", gene selection: ",
+                    #                   gene_selection,
+                    #                   ", criterion: ", criterion, ", max_features: ", max_features, ", n_estimator: ",
+                    #                   n_estimator,
+                    #                   ", auc:", val_auc, ", acc: ", val_acc, ", precision: ", val_prec, ", recall: ",
+                    #                   val_recall)
+                    #             experiment["val_auc"] = val_auc
+                    #             experiment["val_acc"] = val_acc
+                    #             experiment["val_prec"] = val_prec
+                    #             experiment["val_recall"] = val_recall
+                    #             results.append(experiment)
+                    #             if val_auc > best_auc:
+                    #                 best_auc = val_auc
+                    #                 best_auc_model = model
+                    #                 best_auc_exp = experiment.copy()
+                    #             del model
+                    # pred_df_auc = Parse.save_predictions_table(X_train, y_train, X_val, y_val, X_test,
+                    #                                            y_test, best_auc_model, model_type)
+                    # pred_df_auc.to_csv(
+                    #     PATH_save_results + "Prediction_tables/" + model_type + "/pred_table_Perturbations_RTK_RAS_label" + "_" + setup + "_" + model_type + "_" +
+                    #     cancer_type + "_" + gene + "_" + gene_selection + "_AUC_" + str(best_auc) + ".csv")
+                    # filename = (PATH_save_results + "Model_files/" + model_type + "/best_model_Perturbations_RTK_RAS_label" + "_" + setup + "_" + model_type + "_" +
+                    #             cancer_type + "_" + gene + "_" + gene_selection + "_AUC_" + str(
+                    #     best_auc) + ".sav")
+                    # pickle.dump(best_auc_model, open(filename, 'wb'))
+                    #
+                    # ### run best model on Test ###
+                    # # run prediction on test set and produce scores
+                    # y_test_hat = best_auc_model.predict_proba(X_test)[:, 1]
+                    #
+                    # test_auc = sklearn.metrics.roc_auc_score(y_test, y_test_hat)
+                    # test_acc = sklearn.metrics.accuracy_score(y_test, list(map(int, y_test_hat > 0.5)))
+                    # test_prec = sklearn.metrics.precision_score(y_test, list(map(int, y_test_hat > 0.5)))
+                    # test_recall = sklearn.metrics.recall_score(y_test, list(map(int, y_test_hat > 0.5)))
+                    #
+                    # best_auc_exp['test_auc'] = test_auc
+                    # best_auc_exp['test_acc'] = test_acc
+                    # best_auc_exp['test_prec'] = test_prec
+                    # best_auc_exp['test_recall'] = test_recall
+                    #
+                    # best_models.append(best_auc_exp)
 
-                    for n_estimator in [1000, 1500, 2000]:
-                        for criterion in ["gini", "entropy"]:
-                            for max_features in [0.4, 0.3, 0.2, 0.1, "sqrt"]:
-                                experiment = {
-                                    "setup": setup,
-                                    "gene": gene,
-                                    "model": model_type,
-                                    "graph": "NA",
-                                    "gene_selection": "NA",
-                                    "cancer type": cancer_type,
-                                    "num_layer": "NA",
-                                    "channels": "NA",
-                                    "batch": "NA",
-                                    "lr": "NA",
-                                    "ratio": "NA",
-                                    "dropout": dropout,
-                                    "aggregation": "NA",
-                                    "criterion": criterion,
-                                    "max_features": max_features,
-                                    "n_estimator": n_estimator,
-                                }
-
-                                model = RandomForest_with_Gene_Vector(n_estimators=n_estimator, max_depth=3,
-                                                               criterion=criterion, max_features=max_features)
-                                model.fit(X_train, y_train)
-                                model.gene_vector = gene_set
-                                y_val_hat = model.predict(X_val)
-                                # calculate, print and save results
-                                val_auc = sklearn.metrics.roc_auc_score(y_val, y_val_hat)
-                                val_acc = sklearn.metrics.accuracy_score(y_val, list(map(int, y_val_hat > 0.5)))
-                                val_prec = sklearn.metrics.precision_score(y_val, list(map(int, y_val_hat > 0.5)))
-                                val_recall = sklearn.metrics.recall_score(y_val, list(map(int, y_val_hat > 0.5)))
-                                print("model: ", model_type, "cancer_type: ", cancer_type, ", gene selection: ",
-                                      gene_selection,
-                                      ", criterion: ", criterion, ", max_features: ", max_features, ", n_estimator: ",
-                                      n_estimator,
-                                      ", auc:", val_auc, ", acc: ", val_acc, ", precision: ", val_prec, ", recall: ",
-                                      val_recall)
-                                experiment["val_auc"] = val_auc
-                                experiment["val_acc"] = val_acc
-                                experiment["val_prec"] = val_prec
-                                experiment["val_recall"] = val_recall
-                                results.append(experiment)
-                                if val_auc > best_auc:
-                                    best_auc = val_auc
-                                    best_auc_model = model
-                                    best_auc_exp = experiment.copy()
-                                del model
-                    pred_df_auc = Parse.save_predictions_table(X_train, y_train, X_val, y_val, X_test,
-                                                               y_test, best_auc_model, model_type)
-                    pred_df_auc.to_csv(
-                        PATH_save_results + "Prediction_tables/" + model_type + "/pred_table_Perturbations_RTK_RAS_label" + "_" + setup + "_" + model_type + "_" +
-                        cancer_type + "_" + gene + "_" + gene_selection + "_AUC_" + str(best_auc) + ".csv")
-                    filename = (PATH_save_results + "Model_files/" + model_type + "/best_model_Perturbations_RTK_RAS_label" + "_" + setup + "_" + model_type + "_" +
-                                cancer_type + "_" + gene + "_" + gene_selection + "_AUC_" + str(
-                        best_auc) + ".sav")
-                    pickle.dump(best_auc_model, open(filename, 'wb'))
-
-                    ### run best model on Test ###
-                    # run prediction on test set and produce scores
-                    y_test_hat = best_auc_model.predict_proba(X_test)[:, 1]
-
-                    test_auc = sklearn.metrics.roc_auc_score(y_test, y_test_hat)
-                    test_acc = sklearn.metrics.accuracy_score(y_test, list(map(int, y_test_hat > 0.5)))
-                    test_prec = sklearn.metrics.precision_score(y_test, list(map(int, y_test_hat > 0.5)))
-                    test_recall = sklearn.metrics.recall_score(y_test, list(map(int, y_test_hat > 0.5)))
-
-                    best_auc_exp['test_auc'] = test_auc
-                    best_auc_exp['test_acc'] = test_acc
-                    best_auc_exp['test_prec'] = test_prec
-                    best_auc_exp['test_recall'] = test_recall
-
-                    best_models.append(best_auc_exp)
-
-            # Save results
-            keys = results[0].keys()
-            with open(
-                    PATH_save_results + "Comparison_grid/grid_Perturbations_analysis_3_ELR_RF.csv",
-                    'w', newline='') as output_file:
-                dict_writer = csv.DictWriter(output_file, keys)
-                dict_writer.writeheader()
-                dict_writer.writerows(results)
-
-            keys = best_models[0].keys()
-            with open(
-                    PATH_save_results + "Comparison_grid/best_models_Perturbations_analysis_3_ELR_RF.csv",
-                    'w', newline='') as output_file:
-                dict_writer = csv.DictWriter(output_file, keys)
-                dict_writer.writeheader()
-                dict_writer.writerows(best_models)
-
-keys = results[0].keys()
-with open(
-        PATH_save_results + "Comparison_grid/grid_Perturbations_analysis_3_ELR_RF.csv",
-        'w', newline='') as output_file:
-    dict_writer = csv.DictWriter(output_file, keys)
-    dict_writer.writeheader()
-    dict_writer.writerows(results)
-
-keys = best_models[0].keys()
-with open(
-        PATH_save_results + "Comparison_grid/best_models_Perturbations_analysis_3_ELR_RF.csv",
-        'w', newline='') as output_file:
-    dict_writer = csv.DictWriter(output_file, keys)
-    dict_writer.writeheader()
-    dict_writer.writerows(best_models)
+#             # Save results
+#             keys = results[0].keys()
+#             with open(
+#                     PATH_save_results + "Comparison_grid/grid_Perturbations_analysis_3_ELR_RF.csv",
+#                     'w', newline='') as output_file:
+#                 dict_writer = csv.DictWriter(output_file, keys)
+#                 dict_writer.writeheader()
+#                 dict_writer.writerows(results)
+#
+#             keys = best_models[0].keys()
+#             with open(
+#                     PATH_save_results + "Comparison_grid/best_models_Perturbations_analysis_3_ELR_RF.csv",
+#                     'w', newline='') as output_file:
+#                 dict_writer = csv.DictWriter(output_file, keys)
+#                 dict_writer.writeheader()
+#                 dict_writer.writerows(best_models)
+#
+# keys = results[0].keys()
+# with open(
+#         PATH_save_results + "Comparison_grid/grid_Perturbations_analysis_3_ELR_RF.csv",
+#         'w', newline='') as output_file:
+#     dict_writer = csv.DictWriter(output_file, keys)
+#     dict_writer.writeheader()
+#     dict_writer.writerows(results)
+#
+# keys = best_models[0].keys()
+# with open(
+#         PATH_save_results + "Comparison_grid/best_models_Perturbations_analysis_3_ELR_RF.csv",
+#         'w', newline='') as output_file:
+#     dict_writer = csv.DictWriter(output_file, keys)
+#     dict_writer.writeheader()
+#     dict_writer.writerows(best_models)
 

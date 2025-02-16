@@ -7,6 +7,8 @@ from matplotlib import pyplot as plt
 import scipy
 import math
 import pickle
+from sklearn.linear_model import ElasticNet
+from sklearn.ensemble import RandomForestClassifier
 from data.gene_graphs import GeneManiaGraph, RegNetGraph, HumanNetV2Graph, \
     FunCoupGraph
 import networkx as nx
@@ -20,6 +22,28 @@ PATH_output = "/home/shair/Desktop/Gil/2024_STAMP_Explainatory_Translational_Sor
 results_PATH = PATH_output + "STAMP_predictions/"
 
 
+
+# Redefine randomforestclassifier + elasticnet, so they can store the genes vector (neighbors used as features by the model, in the right order)
+class RandomForest_with_Gene_Vector(RandomForestClassifier):
+    def __init__(self, *args, gene_vector=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.gene_vector = gene_vector  # Add the gene_vector attribute
+
+    def set_gene_neighbors(self, vector):
+        self.gene_vector = vector  # Method to set the model_vector after training
+
+    def get_gene_vector(self):
+        return self.gene_vector  # Method to retrieve the model_vector
+class ElasticNet_with_Gene_Vector(ElasticNet):
+    def __init__(self, *args, gene_vector=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.gene_vector = gene_vector  # Add the model_vector attribute
+
+    def set_gene_neighbors(self, vector):
+        self.gene_vector = vector  # Method to set the model_vector after training
+
+    def get_gene_vector(self):
+        return self.gene_vector  # Method to retrieve the model_vector
 
 
 ### Functions
@@ -233,7 +257,7 @@ if __name__ == '__main__':
 
     # Parameters
     # save_feature_importance = True
-    delay_seconds = 5
+    delay_seconds = 15
     data_to_predict = ["ENLIGHT"] # ["GDSC", "ENLIGHT", "CCLE"]
 
     # Important genes list.
@@ -260,7 +284,7 @@ if __name__ == '__main__':
 
     # sorafenib_neighbors_funcoup = get_funcoup_neighbors_of_list(Sorafenib_targets)
     # rtk_ras_dominant_neighbors_funcoup = get_funcoup_neighbors_of_list(RTK_RAS_dominant_genes)
-    for setup in ["sorafenib_targets", "rtk_ras_dominant"]:
+    for setup in ["rtk_ras_dominant"]:#, "sorafenib_targets"]:
         # Set up gene list and neighbors
         if setup == "sorafenib_targets":
             gene_tumor_type_targets_Sorafenib_project = {
@@ -271,7 +295,7 @@ if __name__ == '__main__':
             "KIT": ["pan_cancer"],
             "FLT3": ["pan_cancer"],
             "RET": ["pan_cancer"],
-            "all_neighbors": ["LIHC", "pan_cancer"]
+            "all_neighbors": ["pan_cancer", "LIHC"]
             }
             gene_list = Sorafenib_targets
             # neighbors_funcoup_setup = sorafenib_neighbors_funcoup
@@ -284,7 +308,7 @@ if __name__ == '__main__':
                 "NF1": ["LIHC"],
                 "RASA1": ["LIHC"],
                 "ERRFI1": ["LIHC"],
-                "all_neighbors": ["LIHC", "pan_cancer"]
+                "all_neighbors": ["pan_cancer", "LIHC"]
             }
             gene_list = RTK_RAS_dominant_genes
             # neighbors_funcoup_setup = rtk_ras_dominant_neighbors_funcoup
@@ -304,12 +328,13 @@ if __name__ == '__main__':
             # neighbors_funcoup = list(neighborhood_funcoup.nodes)
 
 
-            for model_type in ["GCN", "RF", "ELR"]:
+            for model_type in ["RF", "ELR"]:#, "GCN"]: ## Done with GCN for now.
                 for cancer_type in gene_tumor_type_targets_Sorafenib_project[gene]:
                     ## Get gene's graph & first degree variables
                     gene_model = load_model(model_type, cancer_type, gene, setup)
                     # 1st degree neighbors
                     if model_type == "GCN":
+                        gene_model.eval()
                         gene_first_degree_neighbors = gene_model.X.columns.drop_duplicates()
                     else:
                         gene_first_degree_neighbors = gene_model.gene_vector
@@ -331,7 +356,8 @@ if __name__ == '__main__':
 
                             print("Predicting for setup: ", setup, " for gene: ", gene, " in cancer type: ", cancer_type, " using data: ", data, " with model: ", model_type)
                             # get predictions for data
-                            gene_model_predict = gene_model.predict(data_first_deg_z_scored)
+                            with torch.no_grad():
+                                gene_model_predict = gene_model.predict(data_first_deg_z_scored)
 
                             if model_type == "GCN":
                                 data_predict_bool = np.argmax(gene_model_predict, axis=1)
@@ -380,4 +406,5 @@ if __name__ == '__main__':
 
                             if model_type == "GCN":
                                 torch.cuda.empty_cache()
+
                     del gene_model
