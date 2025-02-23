@@ -118,7 +118,7 @@ def get_HV2_neighbors_of_list(gene_list):
 
 
 # Important genes list.
-Sorafenib_targets = ["BRAF", "RAF1"] # "KIT", "FLT3", "RET", "PDGFRB"] # , already trained.
+Sorafenib_targets = ["BRAF", "RAF1", "KIT", "FLT3", "RET", "PDGFRB"] # , already trained.
 RTK_RAS_dominant_genes = ["EGFR", "ERRFI1", "KRAS", "MET", "NF1", "RASA1"]
 # TP53_pathway_genes = ["TP53", "MDM2", "MDM4", "CDKN2A", "ATM", "CHEK2", "RPS6KA3"]
 
@@ -134,20 +134,20 @@ embedding = 30
 
 gene_tumor_type_targets_Sorafenib_project = {
     # RTK RAS dominant genes:
-    # "EGFR": ["LIHC"],
-    # "KRAS": ["LIHC"],
-    # "MET": ["LIHC"],
-    # "NF1": ["LIHC"],
-    # "RASA1": ["LIHC"],
-    # "ERRFI1": ["LIHC"],
+    "EGFR": ["pan_cancer"], #"LIHC"],
+    "KRAS": ["pan_cancer"], #["LIHC"],
+    "MET": ["pan_cancer"], #["LIHC"],
+    "NF1": ["pan_cancer"], #["LIHC"],
+    "RASA1": ["pan_cancer"], #["LIHC"],
+    "ERRFI1": ["pan_cancer"] #["LIHC"],
 
     # Sorafenib targets:
-    "BRAF": ["LIHC"], #, "pan_cancer"],
-    "RAF1": ["LIHC"], #, "pan_cancer"],
-    "PDGFRB": ["LIHC"], #, "pan_cancer"],
-    "KIT": ["LIHC"], #, "pan_cancer"],
-    "FLT3": ["LIHC"], #, "pan_cancer"],
-    "RET": ["LIHC"] #, "pan_cancer"],
+    # "BRAF": ["LIHC"], #, "pan_cancer"],
+    # "RAF1": ["LIHC"], #, "pan_cancer"],
+    # "PDGFRB": ["LIHC"], #, "pan_cancer"],
+    # "KIT": ["LIHC"], #, "pan_cancer"],
+    # "FLT3": ["LIHC"], #, "pan_cancer"],
+    # "RET": ["LIHC"] #, "pan_cancer"],
     # all
     # "all_neighbors": ["LIHC", "pan_cancer"]
 }
@@ -163,10 +163,10 @@ rtk_ras_dominant_neighbors_HV2 = get_HV2_neighbors_of_list(RTK_RAS_dominant_gene
 best_models = []
 results = []
 
-for setup in ["sorafenib_targets", "rtk_ras_dominant"]:
+for setup in ["rtk_ras_dominant"]:# , "sorafenib_targets"]:
     # Set up gene list and neighbors
     if setup == "sorafenib_targets":
-        gene_list = Sorafenib_targets + ["all_neighbors"]
+        gene_list = Sorafenib_targets #+ ["all_neighbors"]
         neighbors_funcoup_setup = sorafenib_neighbors_funcoup
         neighbors_HV2_setup = sorafenib_neighbors_HV2
     if setup == "rtk_ras_dominant":
